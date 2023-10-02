@@ -14,11 +14,12 @@ const client = new MongoClient(uri, {
     strict: true,
     deprecationErrors: true,
   },
+  maxPoolSize: 10,
 });
 
 async function run() {
   try {
-    await client.connect((error) => {
+    client.connect((error) => {
       if (error) {
         console.log(error);
         return;
